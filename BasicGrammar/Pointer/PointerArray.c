@@ -6,7 +6,9 @@
 * Description : 指针数组
 */
 #include<stdio.h>
+#include<stdlib.h>
 
+// 指针数组长度
 #define LENGTH 10
 
 /***
@@ -33,12 +35,15 @@ int main(){
     }
 
     int *tArr = arr[0];
+    
+    // 扩展空间
+    extendArr(&tArr, LENGTH, LENGTH << 1);
+
+    // 遍历新的数组地址元素值
     i = 0;
-    // extendArr(&tArr, LENGTH, LENGTH * 2);
-    for( ; i <  LENGTH; ++i) {
+    for( ; i <  LENGTH << 1; ++i) {
         printf("tArr[%d] = %d\n", i, *(tArr + i));
     }
-
 
     return 0;
 }
@@ -48,17 +53,32 @@ int main(){
  **/
 int extendArr(int **arr, int nowSize, int needSize) {
     int **tArr = NULL;
-    *tArr = (int *)malloc(sizeof(int) * needSize);
+
+    // 创建新数组空间
+    tArr = (int *)malloc(sizeof(int) * needSize);
+    if(tArr == NULL){
+        return -1;
+    }
 
     // 复制原来的元素
     int i = 0;
     for( ; i < nowSize; ++i) {
-        *(*tArr + i) = *arr[i];
+        *(*tArr + i) = *(*arr + i);
+	// 等价形式
+	// *(tArr[i]) = *(arr[i]);
+
         printf("%d\n", *(*tArr + i));
     }
 
+    // 赋值剩余元素
+    while(i < needSize) {
+        *(*tArr + i) = -1; 
+    }
+
+    // 释放原来的空间
     free(arr);
 
+    // 将原来的数组的指针的指针指向新的地址
     arr = tArr;
 
 }
