@@ -57,9 +57,63 @@
   * void
 
 
+* common function
 
-|      |      |
-| ---- | ---- |
-|      |      |
+  | Header File | Function         |
+  | ----------- | ---------------- |
+  | float.h     | FLT_MIN, FLT_MAX |
 
-|
+  | 类型        | 比特数 | 有效数字 | 数值范围         |
+  | ----------- | ------ | -------- | ---------------- |
+  | float       | 32     | 6~7      | 10^-37~10^38     |
+  | double      | 64     | 15~16    | 10^-307~10^308   |
+  | long double | 128    | 18~19    | 10^-4931~10^4932 |
+
+* 字符串
+
+  ```
+  char name[];
+  char *name;
+  ```
+
+* math
+
+  ```
+  sqrt()
+  pow()
+  ```
+
+* 字符输入输出
+
+  ```
+  scanf()
+  printf()
+  
+  getchar()
+  putchar()
+  ```
+
+* main(int args, char *argv[])
+
+  ```
+  args : the number of parameter 程序自动检测 *rgv数组长度
+  argv : 
+  	the array of parameter 
+  	argv[0] : the first parameter
+  	...
+  ```
+
+* 字符数组
+
+  ```
+  char c[] = "Nori";
+  ```
+
+  | Header             | Function          |
+  | ------------------ | ----------------- |
+  | #include<string.h> | puts()<br/>gets() |
+
+  
+
+
+
