@@ -113,7 +113,52 @@
   | ------------------ | ----------------- |
   | #include<string.h> | puts()<br/>gets() |
 
+
+* 在32位的系统中
+
+  ```c
+  short 2 byte
+  int, float, long 4 byte
+  double8 byte
   
+  指针长度 4byte	(在64位中为 8 byte)
+  
+  ```
 
+* union & struct
 
+  ```c
+  union Un{
+      int i;
+      double d;
+      char c;
+  };
+  
+  typedef struct{
+      int i;
+      double d;
+      char c;
+  }Node;
+  typedef struct{
+      int i;
+      char c;
+      double d;
+  }Node1;
+  
+  ...main(){
+      Node n;
+      Node n1;
+      Un u;
+      
+      // Output 24
+      sprintf("%d", sizeof(n)); 
+     
+      // Output 16
+      sprintf("%d", sizeof(n1));
+      
+      // Output 8
+      sprintf("%d", sizeof(u));
+  }
+  ```
 
+  
